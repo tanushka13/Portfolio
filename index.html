@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tanushka Sahu | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    html, body {
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #f0f0f0;
+      background: #fff;
+    }
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    .serif-title {
+      font-family: 'Playfair Display', serif;
+      letter-spacing: 0.04em;
+    }
+    .profile-border {
+      padding: 10px;
+      border-radius: 9999px;
+      display: inline-block;
+      background: rgba(255,255,255,0.18);
+      box-shadow: 0 0 0 8px rgba(255,255,255,0.12);
+      backdrop-filter: blur(6px);
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .gradient-animate {
+      background: linear-gradient(120deg, #b39ddb 0%, #a084e8 25%, #e0aaff 50%, #6d4aff 75%, #b39ddb 100%);
+      background-size: 400% 400%;
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 8s linear infinite;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    .nav-btn {
+      position: relative;
+      border: none;
+      transition: color 0.2s, transform 0.2s;
+      overflow: visible;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+    }
+    .nav-btn::before, .nav-btn::after {
+      display: none !important;
+    }
+    .nav-btn::after {
+      content: '';
+      position: absolute;
+      left: 20%;
+      right: 20%;
+      bottom: -4px;
+      height: 2px;
+      background: linear-gradient(90deg, #b39ddb 0%, #6d4aff 100%);
+      border-radius: 2px;
+      opacity: 0;
+      transform: translateY(8px) scaleX(0.5);
+      transition: opacity 0.25s, transform 0.25s;
+      z-index: 1;
+      display: block !important;
+    }
+    .nav-btn:hover::after, .nav-btn:focus::after {
+      opacity: 1;
+      transform: translateY(0) scaleX(1);
+    }
+    .nav-btn:hover, .nav-btn:focus {
+      color: #fff !important;
+      transform: translateY(-3px);
+      background: none;
+      border: none;
+      box-shadow: none;
+    }
+    .nav-btn:hover {
+      background-color: rgba(179, 157, 219, 0.1);
+      box-shadow: none;
+    }
+    @media (max-width: 499px) {
+      .achievement-cards-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        width: 100% !important;
+        max-width: 320px !important;
+        margin: 0 auto !important;
+        overflow-x: visible !important;
+      }
+      .achievement-card {
+        width: 100% !important;
+        min-width: unset !important;
+        padding: 1.25rem !important;
+      }
+    }
+    @media (min-width: 500px) and (max-width: 800px) {
+      .achievement-cards-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(240px, 1fr)) !important;
+        gap: 1.5rem !important;
+        overflow-x: visible !important;
+        width: 100% !important;
+        max-width: 700px !important;
+        margin: 0 auto !important;
+      }
+      .achievement-card {
+        min-width: unset !important;
+        width: 100% !important;
+        padding: 1.5rem !important;
+      }
+    }
+    @media (max-width: 724px) {
+      section.min-h-screen {
+        padding-top: 3.5rem !important;
+        min-height: 550px;
+      }
+      .profile-row {
+        display: flex !important;
+        flex-direction: column-reverse !important;
+        align-items: center !important;
+        gap: 1.5rem !important;
+        margin-bottom: 1.5rem !important;
+      }
+      .profile-row .text-left {
+        margin-bottom: 0.5rem !important;
+        text-align: center !important;
+      }
+      .profile-row h1 {
+        margin-bottom: 0.5rem !important;
+      }
+      .profile-row p {
+        margin-bottom: 0.25rem !important;
+      }
+      .text-center.w-full.max-w-2xl.relative p {
+        margin-bottom: 0.5rem !important;
+      }
+      .profile-border {
+        padding: 8px !important;
+        border-radius: 9999px !important;
+        display: inline-block !important;
+        background: rgba(255,255,255,0.18) !important;
+        box-shadow: 0 0 0 6px rgba(255,255,255,0.12) !important;
+        backdrop-filter: blur(6px) !important;
+      }
+      .profile-border img {
+        width: 112px !important;
+        height: 112px !important;
+        border-radius: 9999px !important;
+        object-fit: cover !important;
+      }
+    }
+  </style>
+</head>
+
+<body class="overflow-x-hidden">
+  <div class="relative w-full mx-auto min-h-screen" style="
+    background:
+      radial-gradient(ellipse 35% 25% at 25% 20%, rgba(220, 120, 255, 0.32) 0%, transparent 100%),
+      radial-gradient(ellipse 30% 18% at 80% 65%, rgba(180, 90, 220, 0.22) 0%, transparent 100%),
+      radial-gradient(ellipse 20% 12% at 60% 85%, rgba(255, 180, 255, 0.18) 0%, transparent 100%),
+      linear-gradient(135deg, #120926 0%, #181028 100%);
+  ">
+  <!-- Fixed Top Navigation Bar -->
+  <nav class="nav fixed top-0 left-0 mt-2 z-50 flex justify-center w-full">
+    <div class="flex-1 max-w-full overflow-hidden flex items-center justify-between px-4 sm:px-6 md:px-8 lg:px-10 py-2 sm:py-3 md:py-4 lg:py-5 bg-[#181028]/80 backdrop-blur-md border-b border-[#b39ddb]/20 shadow-sm rounded sm:rounded-lg md:rounded-2xl mx-0 sm:mx-2 md:mx-8 lg:mx-[60px]">
+      <a href="#" class="px-3 py-1 text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wide gradient-animate transition hover:shadow-[0_8px_16px_-4px_rgba(179,157,219,0.45)] hover:scale-105">Tanushka's Portfolio</a>
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex gap-4">
+        <a href="#about" class="nav-btn text-[#b39ddb] text-sm md:text-base transition-colors font-semibold px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b39ddb]">About</a>
+        <a href="#highlights" class="nav-btn text-[#b39ddb] text-sm md:text-base transition-colors font-semibold px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b39ddb]">Achievements</a>
+        <a href="#skills-work" class="nav-btn text-[#b39ddb] text-sm md:text-base transition-colors font-semibold px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b39ddb]">Skills</a>
+        <a href="#services" class="nav-btn text-[#b39ddb] text-sm md:text-base transition-colors font-semibold px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b39ddb]">Services</a>
+        <a href="#contact" class="nav-btn text-[#b39ddb] text-sm md:text-base transition-colors font-semibold px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-[#b39ddb]">Contact</a>
+      </div>
+      <!-- Hamburger for Mobile -->
+      <button id="hamburger" class="md:hidden flex items-center justify-center p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#b39ddb]" aria-label="Open menu">
+        <svg class="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-[#b39ddb]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 z-50 bg-[#181028] bg-opacity-95 backdrop-blur-lg flex-col items-center justify-center hidden">
+      <div class="flex justify-between items-center w-full px-6 pt-6">
+        <a href="#" class="px-3 py-1 text-lg sm:text-xl md:text-2xl lg:text-3xl font-extrabold tracking-wide gradient-animate transition hover:shadow-[0_8px_16px_-4px_rgba(179,157,219,0.45)] hover:scale-105">Tanushka's Portfolio</a>
+        <button id="closeMenu" class="p-2 rounded focus:outline-none focus:ring-2 focus:ring-[#b39ddb]" aria-label="Close menu">
+          <svg class="w-8 h-8 text-[#b39ddb]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+      <div class="flex flex-col items-center justify-center gap-6 mt-16">
+        <a href="#about" class="text-white text-lg font-semibold hover:text-[#b39ddb] transition transform hover:-translate-y-1 hover:shadow-lg hover:shadow-[#b39ddb]/40">About</a>
+        <a href="#highlights" class="text-white text-lg font-semibold hover:text-[#b39ddb] transition transform hover:-translate-y-1 hover:shadow-lg hover:shadow-[#b39ddb]/40">Achievements</a>
+        <a href="#skills-work" class="text-white text-lg font-semibold hover:text-[#b39ddb] transition transform hover:-translate-y-1 hover:shadow-lg hover:shadow-[#b39ddb]/40">Skills</a>
+        <a href="#services" class="text-white text-lg font-semibold hover:text-[#b39ddb] transition transform hover:-translate-y-1 hover:shadow-lg hover:shadow-[#b39ddb]/40">Services</a>
+        <a href="#contact" class="text-white text-lg font-semibold hover:text-[#b39ddb] transition transform hover:-translate-y-1 hover:shadow-lg hover:shadow-[#b39ddb]/40">Contact</a>
+      </div>
+    </div>
+  </nav>
+  <div class="h-16 sm:h-20 md:h-24 lg:h-28"></div>
+  <!-- Hero Section -->
+    <section class="min-h-screen flex flex-col justify-start pt-16 sm:pt-20 md:pt-24 items-center text-center px-16 relative">
+    <!-- Translucent Layer -->
+    <div class="absolute inset-0 bg-black/30 backdrop-blur-sm z-0"></div>
+
+    <!-- Floating Elements -->
+      <div class="absolute top-[22%] left-[6%] floating text-2xl opacity-30 z-10">📝</div>
+      <div class="absolute top-[31%] right-[30%] floating text-2xl opacity-30 z-10">🧑‍💻</div>
+      <div class="absolute top-[46%] right-[11%] floating text-2xl opacity-30 z-10">🧵</div>
+      <div class="absolute bottom-[29%] right-[20%] floating text-2xl opacity-30 z-10">💻</div>
+      <div class="absolute top-[58%] left-[13%] floating text-2xl opacity-30 z-10">📱</div>
+      <div class="absolute bottom-[18%] left-[23%] floating text-2xl opacity-30 z-10">🌐</div>
+      <div class="absolute top-[32%] right-[18%] floating text-2xl opacity-30 z-10">🧠</div>
+      <div class="absolute text-2xl opacity-30 z-10" style="right: 40%; top: 74%;">✨</div>
+
+      <div class="relative w-full">
+    <!-- Content -->
+        <div class="z-10 flex flex-col items-center w-full">
+          <!-- Small bright spot top-right -->
+          <div class="absolute top-[-40px] right-[-40px] w-32 h-32 bg-[#b39ddb]/30 rounded-full blur-2xl opacity-60 z-0"></div>
+          <!-- Name and Profile Row -->
+          <div class="flex flex-row items-end gap-4 sm:gap-6 md:gap-8 lg:gap-12 mb-4 sm:mb-6 md:mb-8 lg:mb-10 profile-row">
+            <div class="text-left">
+              <p class="text-sm sm:text-base md:text-lg font-light mb-1 sm:mb-1.5 md:mb-2">Hey!</p>
+              <h1 class="text-base sm:text-xl md:text-3xl lg:text-5xl xl:text-6xl font-extrabold serif-title tracking-wide">I'm Tanushka Sahu</h1>
+            </div>
+            <span class="profile-border">
+              <img src="images/Profile.jpg" alt="Tanushka Sahu" class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 lg:w-40 lg:h-40 object-cover rounded-full" />
+            </span>
+          </div>
+
+          <!-- Headline and Contact Block -->
+          <div class="text-center w-full max-w-2xl relative">
+            <p class="text-sm sm:text-base md:text-xl font-normal mb-2 sm:mb-3 md:mb-4">Tech-savvy Content Wizard | Web3 Curious | Digital Storyteller</p>
+            <!-- <p class="text-xs sm:text-sm md:text-base mb-4 sm:mb-6 md:mb-8 lg:mb-8">I build brands with words and pixels.</p> -->
+            <div class="relative inline-block mt-4 sm:mt-6 md:mt-8">
+              <div class="flex flex-row gap-4 items-center justify-center">
+                <div class="relative group inline-block">
+                  <a id="contact-btn" href="#contact" class="inline-block bg-[#b39ddb]/20 border-2 border-[#b39ddb] text-[#f0f0f0] px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 rounded-xl text-sm sm:text-base font-semibold transition duration-300 hover:bg-[#b39ddb]/40 hover:border-[#b39ddb] hover:text-[#181028] shadow-lg relative z-10">Let's Connect</a>
+                  <div id="social-icons" class="absolute left-0 mt-4 min-w-[120px] max-w-[120px] w-full hidden group-hover:flex flex-row items-center justify-center gap-2 px-0 py-2 bg-black rounded-2xl shadow-lg border border-[#0a2a1a]" style="top: 100%;">
+                    <!-- Medium Icon -->
+                    <a href="https://medium.com/@tanushkas1305" target="_blank" aria-label="Medium" class="transition-transform duration-200 ease-in-out hover:-translate-y-2">
+                      <svg width="28" height="28" viewBox="0 0 1043.63 592.71" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect width="1043.63" height="592.71" fill="black"/>
+                        <text x="50%" y="72%" text-anchor="middle" fill="#b39ddb" font-size="480" font-family="Georgia, serif" font-weight="bold" dominant-baseline="middle">M</text>
+                      </svg>
+                    </a>
+                    <!-- Twitter Icon -->
+                    <a href="https://x.com/tanushkasahu" target="_blank" aria-label="Twitter" class="transition-transform duration-200 ease-in-out hover:-translate-y-2">
+                      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26 10.5a6.5 6.5 0 0 1-1.884.516A3.282 3.282 0 0 0 25.292 9.1a6.574 6.574 0 0 1-2.084.797A3.28 3.28 0 0 0 16 12.5c0 .257.03.508.085.748A9.325 9.325 0 0 1 8.11 9.6a3.28 3.28 0 0 0 1.016 4.374A3.267 3.267 0 0 1 7.8 13.2v.041a3.28 3.28 0 0 0 2.632 3.218 3.273 3.273 0 0 1-.862.115c-.21 0-.416-.02-.616-.058a3.283 3.283 0 0 0 3.065 2.28A6.588 6.588 0 0 1 6 23.027a9.29 9.29 0 0 0 5.034 1.475c6.038 0 9.341-5.003 9.341-9.341 0-.142-.003-.284-.01-.425A6.676 6.676 0 0 0 26 10.5Z" fill="#b39ddb"/></svg>
+                    </a>
+                    <!-- LinkedIn Icon -->
+                    <a href="https://www.linkedin.com/in/tanushka-sahu-a892a9290" target="_blank" aria-label="LinkedIn" class="transition-transform duration-200 ease-in-out hover:-translate-y-2">
+                      <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="16" cy="16" r="16" fill="none"/><path d="M12 13h2v6h-2v-6zm1-1.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm3 1.5h2v.857c.276-.527.98-.857 1.5-.857 1.104 0 2 .896 2 2v4h-2v-4c0-.552-.448-1-1-1s-1 .448-1 1v4h-2v-6z" fill="#b39ddb"/></svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex justify-center items-center">
+      <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 rounded-3xl shadow-2xl border border-[#b39ddb]/30 bg-gradient-to-br from-[#181028] via-[#24124a] to-[#b39ddb]/10 overflow-hidden">
+        <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#b39ddb]/20 rounded-full blur-2xl opacity-60 z-0"></div>
+        <div class="absolute -bottom-12 -right-12 w-56 h-56 bg-[#b39ddb]/30 rounded-full blur-3xl opacity-50 z-0"></div>
+        <h2 class="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wider mb-6 sm:mb-8 md:mb-10 z-10 text-center bg-gradient-to-r from-[#b39ddb] via-[#a084e8] to-[#6d4aff] bg-clip-text text-transparent drop-shadow-lg">About Me</h2>
+        <p class="text-[#e5d9fa] text-base sm:text-lg md:text-xl leading-relaxed mb-4 sm:mb-6">Your about me content goes here...</p>
+      </div>
+    </section>
+
+    <!-- Diagonal Gradient Separator between About Me and Achievements -->
+    <div class="w-full h-24 relative overflow-hidden my-[-1.5rem]">
+      <div class="absolute inset-0 bg-gradient-to-br from-transparent via-[#b39ddb]/20 to-transparent transform -skew-y-6"></div>
+    </div>
+
+    <!-- Highlights & Achievements Section -->
+    <section id="highlights" class="relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex justify-center items-center">
+      <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 rounded-3xl shadow-2xl border border-[#b39ddb]/30 bg-gradient-to-br from-[#181028] via-[#24124a] to-[#b39ddb]/10 overflow-hidden">
+        <div class="absolute -top-12 -left-12 w-48 h-48 bg-[#b39ddb]/20 rounded-full blur-2xl opacity-60 z-0"></div>
+        <div class="absolute -bottom-16 -right-16 w-72 h-72 bg-[#b39ddb]/30 rounded-full blur-3xl opacity-50 z-0"></div>
+        <h2 class="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wider mb-6 sm:mb-8 md:mb-10 z-10 text-center bg-gradient-to-r from-[#b39ddb] via-[#a084e8] to-[#6d4aff] bg-clip-text text-transparent drop-shadow-lg">Highlights & Achievements</h2>
+        <div class="relative z-10 flex flex-col gap-10 items-center justify-center">
+          <!-- Certifications -->
+          <div class="w-full flex flex-col items-center">
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b39ddb] mb-3 sm:mb-4">Certifications</h3>
+            <div class="achievement-cards-container flex flex-row gap-6 overflow-x-auto pb-2 justify-center items-center">
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Achievement 1</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Achievement 2</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Achievement 3</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Impact Made -->
+          <div class="w-full flex flex-col items-center">
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b39ddb] mb-3 sm:mb-4">Impact Made</h3>
+            <div class="achievement-cards-container flex flex-row gap-6 overflow-x-auto pb-2 justify-center items-center">
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Impact 1</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Impact 2</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Impact 3</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+            </div>
+          </div>
+          <!-- Wins -->
+          <div class="w-full flex flex-col items-center">
+            <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b39ddb] mb-3 sm:mb-4">Wins</h3>
+            <div class="achievement-cards-container flex flex-row gap-6 overflow-x-auto pb-2 justify-center items-center">
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Win 1</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Win 2</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+              <div class="achievement-card min-w-[240px] bg-[#20153a]/80 rounded-xl p-6 shadow-lg border border-[#b39ddb]/20 flex flex-col items-center justify-center">
+                <span class="text-[#b39ddb] text-xs sm:text-sm md:text-base font-semibold text-center">Win 3</span>
+                <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base mt-2 text-center">Add details here...</p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- Subtle Gradient Fade Separator between Achievements and Skills -->
+  <div class="w-full flex justify-center items-center my-[-1.5rem]">
+    <div class="w-2/3 h-4 rounded-full bg-gradient-to-r from-transparent via-[#b39ddb]/30 to-transparent"></div>
+  </div>
+
+  <!-- Skills Section -->
+  <section id="skills-work" class="relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex justify-center items-center">
+    <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 rounded-3xl shadow-2xl border border-[#b39ddb]/30 bg-gradient-to-br from-[#181028] via-[#24124a] to-[#b39ddb]/10 overflow-hidden">
+      <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#b39ddb]/20 rounded-full blur-2xl opacity-60 z-0"></div>
+      <div class="absolute -bottom-12 -right-12 w-56 h-56 bg-[#b39ddb]/30 rounded-full blur-3xl opacity-50 z-0"></div>
+      <h2 class="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wider mb-6 sm:mb-8 md:mb-10 z-10 text-center bg-gradient-to-r from-[#b39ddb] via-[#a084e8] to-[#6d4aff] bg-clip-text text-transparent drop-shadow-lg">Skillset</h2>
+      <div class="relative z-10 flex flex-col gap-10">
+        <!-- Core Skills -->
+        <div class="transition-all duration-200 border border-[#b39ddb]/30 rounded-2xl bg-[#20153a]/60 p-6 shadow-sm hover:-translate-y-1 hover:shadow-[0_2px_8px_0_#d1b3ff55]">
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b39ddb] mb-3 sm:mb-4">Creative Stack</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Content Writing</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Research</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Media Marketing</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Social Media Management</span>
+          </div>
+        </div>
+        <!-- Tech Skills -->
+        <div class="transition-all duration-200 border border-[#b39ddb]/30 rounded-2xl bg-[#20153a]/60 p-6 shadow-sm hover:-translate-y-1 hover:shadow-[0_2px_8px_0_#d1b3ff55]">
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b39ddb] mb-3 sm:mb-4">Tech Skills</h3>
+          <div class="flex flex-wrap gap-3">
+            <!-- <span class="bg-[#b39ddb]/20 text-[#b39ddb] px-4 py-2 rounded-full font-semibold">UI/UX Design</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] px-4 py-2 rounded-full font-semibold">Figma</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] px-4 py-2 rounded-full font-semibold">Canva</span> -->
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Front-End Development</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">HTML/CSS</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">JavaScript</span>
+          </div>
+        </div>
+        <!-- Other Skills -->
+        <div class="transition-all duration-200 border border-[#b39ddb]/30 rounded-2xl bg-[#20153a]/60 p-6 shadow-sm hover:-translate-y-1 hover:shadow-[0_2px_8px_0_#d1b3ff55]">
+          <h3 class="text-lg sm:text-xl md:text-2xl font-bold text-[#b39ddb] mb-3 sm:mb-4">Other Skills</h3>
+          <div class="flex flex-wrap gap-3">
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Communication</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Management</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Teamwork</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Problem Solving</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Adaptability</span>
+            <span class="bg-[#b39ddb]/20 text-[#b39ddb] text-xs sm:text-sm md:text-base px-3 sm:px-4 py-1.5 sm:py-2 rounded-full font-semibold">Creativity</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Subtle Gradient Fade Separator between Skills and Services -->
+  <div class="w-full flex justify-center items-center my-[-1.5rem]">
+    <div class="w-2/3 h-4 rounded-full bg-gradient-to-r from-transparent via-[#b39ddb]/30 to-transparent"></div>
+  </div>
+
+  <!-- Services Section -->
+  <section id="services" class="relative py-12 sm:py-16 md:py-20 lg:py-24 px-3 sm:px-6 md:px-8 lg:px-12 xl:px-16 flex justify-center items-center">
+    <div class="relative w-full max-w-6xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 py-8 sm:py-12 md:py-16 rounded-3xl shadow-2xl border border-[#b39ddb]/30 bg-gradient-to-br from-[#181028] via-[#24124a] to-[#b39ddb]/10 overflow-hidden">
+      <div class="absolute -top-10 -left-10 w-40 h-40 bg-[#b39ddb]/20 rounded-full blur-2xl opacity-60 z-0"></div>
+      <div class="absolute -bottom-12 -right-12 w-56 h-56 bg-[#b39ddb]/30 rounded-full blur-3xl opacity-50 z-0"></div>
+      <h2 class="relative text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-wider mb-6 sm:mb-8 md:mb-10 z-10 text-center bg-gradient-to-r from-[#b39ddb] via-[#a084e8] to-[#6d4aff] bg-clip-text text-transparent drop-shadow-lg">Services I Offer</h2>
+      <div class="relative z-10 flex flex-col md:flex-row gap-8 justify-center items-stretch">
+        <div class="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:border-white/20 hover:shadow-[0_0_30px_rgba(179,157,219,0.15)] hover:shadow-[#b39ddb]/20 hover:scale-105">
+          <span class="text-[#b39ddb] text-sm sm:text-base md:text-lg font-normal mb-1.5 sm:mb-2">Content Writing & Research</span>
+          <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base text-center font-normal">Professional content creation and in-depth research tailored to your brand's needs.</p>
+        </div>
+        <div class="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:border-white/20 hover:shadow-[0_0_30px_rgba(179,157,219,0.15)] hover:shadow-[#b39ddb]/20 hover:scale-105">
+          <span class="text-[#b39ddb] text-sm sm:text-base md:text-lg font-normal mb-1.5 sm:mb-2">Social Media Management</span>
+          <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base text-center font-normal">Strategic planning, scheduling, and engagement to grow your online presence.</p>
+        </div>
+        <div class="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 transition-all duration-300 shadow-[0_0_15px_rgba(0,0,0,0.5)] hover:bg-white/10 hover:border-white/20 hover:shadow-[0_0_30px_rgba(179,157,219,0.15)] hover:shadow-[#b39ddb]/20 hover:scale-105">
+          <span class="text-[#b39ddb] text-sm sm:text-base md:text-lg font-normal mb-1.5 sm:mb-2">Media & Marketing</span>
+          <p class="text-[#e5d9fa] text-xs sm:text-sm md:text-base text-center font-normal">Creative campaigns and marketing solutions to boost your brand's visibility.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  </div>
+
+  <script>
+    const btn = document.getElementById('contact-btn');
+    const icons = document.getElementById('social-icons');
+    let iconsVisible = false;
+    let hideTimeout = null;
+
+    // Set socials bar width to match the button
+    function setSocialBarWidth() {
+      if (btn && icons) {
+        icons.style.width = btn.offsetWidth + 'px';
+      }
+    }
+    setSocialBarWidth();
+    window.addEventListener('resize', setSocialBarWidth);
+
+    function showIcons() {
+      clearTimeout(hideTimeout);
+      icons.classList.remove('hidden');
+      icons.classList.add('flex');
+      iconsVisible = true;
+      setSocialBarWidth();
+    }
+
+    function hideIcons() {
+      icons.classList.add('hidden');
+      icons.classList.remove('flex');
+      iconsVisible = false;
+    }
+
+    btn.addEventListener('mouseenter', showIcons);
+    icons.addEventListener('mouseenter', showIcons);
+
+    btn.addEventListener('mouseleave', () => {
+      hideTimeout = setTimeout(hideIcons, 300);
+    });
+    icons.addEventListener('mouseleave', () => {
+      hideTimeout = setTimeout(hideIcons, 300);
+    });
+
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (!iconsVisible) {
+        showIcons();
+      } else {
+        hideIcons();
+      }
+    });
+
+    // Hide icons when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!btn.contains(e.target) && !icons.contains(e.target)) {
+        hideIcons();
+      }
+    });
+
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    });
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      document.body.style.overflow = '';
+    });
+    // Optional: Close menu on link click
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    });
+  </script>
+  <!-- Footer / Contact Section -->
+  <footer class="w-full bg-[#181028] border-t border-[#b39ddb]/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-8 md:px-12 lg:px-16 py-12 flex flex-col md:flex-row justify-between items-start gap-10 md:gap-0">
+      <!-- Left: Name and Title -->
+      <div class="flex flex-col items-start gap-3 min-w-[220px]">
+        <div class="flex items-center gap-3">
+          
+          <span class="text-2xl font-bold text-[#b39ddb]">Tanushka <span class="text-white">Sahu</span></span>
+        </div>
+        <span class="text-[#bdb7d6] text-base font-medium">Content | Research | Marketing | SMM</span>
+      </div>
+      <!-- Center: Quick Links -->
+      <div class="flex flex-col items-start min-w-[180px]">
+        <h3 class="text-xl font-bold text-white mb-3">Quick Links</h3>
+        <ul class="flex flex-col gap-2">
+          <li class="transition-transform duration-200 hover:translate-x-2"><a href="#" class="text-[#bdb7d6] hover:text-[#b39ddb] font-medium">Home</a></li>
+          <li class="transition-transform duration-200 hover:translate-x-2"><a href="#about" class="text-[#bdb7d6] hover:text-[#b39ddb] font-medium">About</a></li>
+          <li class="transition-transform duration-200 hover:translate-x-2"><a href="#highlights" class="text-[#bdb7d6] hover:text-[#b39ddb] font-medium">Achievements</a></li>
+          <li class="transition-transform duration-200 hover:translate-x-2"><a href="#skills-work" class="text-[#bdb7d6] hover:text-[#b39ddb] font-medium">Skills</a></li>
+          <li class="transition-transform duration-200 hover:translate-x-2"><a href="#services" class="text-[#bdb7d6] hover:text-[#b39ddb] font-medium">Services</a></li>
+        </ul>
+      </div>
+      <!-- Right: Contact Me -->
+      <div class="flex flex-col items-start min-w-[220px]">
+        <h3 class="text-xl font-bold text-white mb-3">Contact Me</h3>
+        <div class="flex items-center gap-2 mb-4 relative">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-[#b39ddb]" height="24px" viewBox="0 -960 960 960" width="24px" fill="#b39ddb"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z"/></svg>
+          <a id="footer-email" href="mailto:tanushka.work01@gmail.com" class="text-[#bdb7d6] font-medium text-base hover:text-[#b39ddb] transition-colors cursor-pointer" title="Click to copy email">tanushka.work01@gmail.com</a>
+          <div id="email-copied-msg" class="hidden absolute top-full right-0 mt-2 px-3 py-1.5 rounded-lg bg-[#b39ddb] text-[#181028] font-semibold text-sm shadow-lg transition-all duration-300 z-50 whitespace-nowrap">Email copied!</div>
+        </div>
+        <div class="flex flex-row gap-3 mt-2">
+          <a href="https://github.com/tanushka13" target="_blank" aria-label="GitHub" class="text-[#bdb7d6] hover:text-[#b39ddb] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.184 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.091-.647.35-1.088.636-1.339-2.221-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.987 1.029-2.686-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.564 9.564 0 0 1 12 6.844c.85.004 1.705.115 2.504.337 1.909-1.295 2.748-1.025 2.748-1.025.546 1.378.202 2.397.1 2.65.64.699 1.028 1.593 1.028 2.686 0 3.847-2.337 4.695-4.566 4.944.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.749 0 .267.18.578.688.48C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2Z"/></svg></a>
+          <a href="https://medium.com/@tanushkas1305" target="_blank" aria-label="Medium" class="text-[#bdb7d6] hover:text-[#b39ddb] transition-colors"><svg class="w-6 h-6" viewBox="0 0 1043.63 592.71" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><rect width="1043.63" height="592.71" fill="none"/><text x="50%" y="72%" text-anchor="middle" fill="currentColor" font-size="480" font-family="Georgia, serif" font-weight="bold" dominant-baseline="middle">M</text></svg></a>
+          <a href="https://linkedin/tanushka-sahu-a892a9290.com/" target="_blank" aria-label="LinkedIn" class="text-[#bdb7d6] hover:text-[#b39ddb] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.76 0-5 2.24-5 5v14c0 2.76 2.24 5 5 5h14c2.76 0 5-2.24 5-5v-14c0-2.76-2.24-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.28c-.966 0-1.75-.79-1.75-1.76s.784-1.76 1.75-1.76 1.75.79 1.75 1.76-.784 1.76-1.75 1.76zm13.5 11.28h-3v-5.6c0-1.34-.03-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97v5.7h-3v-10h2.89v1.36h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.59v5.61z"/></svg></a>
+          <a href="https://twitter.com/tanushkasahu" target="_blank" aria-label="Twitter" class="text-[#bdb7d6] hover:text-[#b39ddb] transition-colors"><svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557a9.93 9.93 0 0 1-2.828.775 4.932 4.932 0 0 0 2.165-2.724c-.951.564-2.005.974-3.127 1.195a4.92 4.92 0 0 0-8.384 4.482C7.691 8.095 4.066 6.13 1.64 3.161c-.542.929-.856 2.01-.857 3.17 0 2.188 1.115 4.117 2.823 5.247a4.904 4.904 0 0 1-2.229-.616c-.054 2.281 1.581 4.415 3.949 4.89a4.936 4.936 0 0 1-2.224.084c.627 1.956 2.444 3.377 4.6 3.417A9.867 9.867 0 0 1 0 21.543a13.94 13.94 0 0 0 7.548 2.209c9.057 0 14.009-7.496 14.009-13.986 0-.213-.005-.425-.014-.636A9.936 9.936 0 0 0 24 4.557z"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <div class="w-full border-t border-[#b39ddb]/10 mt-8 pt-4 text-center">
+      <span class="text-[#bdb7d6] text-sm">© 2024 Tanushka Sahu. All rights reserved.</span>
+    </div>
+  </footer>
+
+  <script>
+    // Copy email to clipboard on click in footer
+    const emailLink = document.getElementById('footer-email');
+    const copiedMsg = document.getElementById('email-copied-msg');
+    emailLink.addEventListener('click', function(e) {
+      e.preventDefault();
+      const email = 'tanushka.work01@gmail.com';
+      navigator.clipboard.writeText(email).then(function() {
+        copiedMsg.classList.remove('hidden');
+        setTimeout(() => {
+          copiedMsg.classList.add('hidden');
+        }, 1800);
+        // To also open mail client, uncomment below:
+        // window.location.href = 'mailto:' + email;
+      });
+    });
+  </script>
+</body>
+
+</html>
